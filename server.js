@@ -5,8 +5,8 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const Base = require("./models/bases");
 const BaseRouter = require("./routes/base-routes");
-require('dotenv').config()
-const port = process.env.PORT || 4000
+require("dotenv").config();
+const port = process.env.PORT || 4000;
 const db =
   "mongodb+srv://Amir:narhanim123@cluster0.u7lmi2z.mongodb.net/restApiBase?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -29,7 +29,7 @@ app.use(
 app.use(express.json());
 app.use(BaseRouter);
 app.use(methodOverride("_method"));
-
+app.use(express.static("front-end"));
 // GET запрос
 app.get("/api/items", async (req, res) => {
   try {
