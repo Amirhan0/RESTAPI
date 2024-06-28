@@ -31,6 +31,11 @@ app.use(BaseRouter);
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "front-end")));
 // GET запрос
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "front-end", "index.html"));
+});
+
 app.get("/api/items", async (req, res) => {
   try {
     const items = await Base.find();
