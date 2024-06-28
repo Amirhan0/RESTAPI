@@ -29,7 +29,7 @@ app.use(
 app.use(express.json());
 app.use(BaseRouter);
 app.use(methodOverride("_method"));
-app.use(express.static("front-end"));
+app.use(express.static(path.join(__dirname, "front-end")));
 // GET запрос
 app.get("/api/items", async (req, res) => {
   try {
