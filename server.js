@@ -31,6 +31,11 @@ app.use(express.json());
 app.use(BaseRouter);
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "frontend")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "index.html"));
+});
+
 // GET запрос
 app.get("/api/items", async (req, res) => {
   try {
