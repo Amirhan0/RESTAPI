@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const Base = require("./models/bases");
 const BaseRouter = require("./routes/base-routes");
+const path = require("path");
 require("dotenv").config();
 const port = process.env.PORT || 4000;
 const db =
@@ -29,6 +30,7 @@ app.use(
 app.use(express.json());
 app.use(BaseRouter);
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "frontend")));
 // GET запрос
 app.get("/api/items", async (req, res) => {
   try {
